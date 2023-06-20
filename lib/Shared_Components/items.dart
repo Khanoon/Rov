@@ -1,12 +1,8 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:dio/dio.dart';
 
-///* เรียกใช้ชื่อฟังชั่นโดยตรงได้เลย
-
-Future<List<dynamic>> getAllHero() async {
+Future<List<dynamic>> getAllItem() async {
   final dio = Dio();
-  String url = "https://apirov.vercel.app/hero";
+  String url = "https://apirov.vercel.app/item";
   try {
     final response = await dio.get(url);
     final data = response.data;
@@ -16,9 +12,9 @@ Future<List<dynamic>> getAllHero() async {
   }
 }
 
-Future<List<dynamic>> getHeroByName(name) async {
+Future<List<dynamic>> getItemByName(name) async {
   final dio = Dio();
-  String url = "https://apirov.vercel.app/hero/name";
+  String url = "https://apirov.vercel.app/item/name";
   try {
     final response =
         await dio.post(url, data: {"teken": "12345", "name": name});
@@ -29,9 +25,9 @@ Future<List<dynamic>> getHeroByName(name) async {
   }
 }
 
-Future<List<dynamic>> updateHero(parameter) async {
+Future<List<dynamic>> updateItem(parameter) async {
   final dio = Dio();
-  String url = "https://apirov.vercel.app/hero/update";
+  String url = "https://apirov.vercel.app/item/update";
   try {
     final dataUpdate = {"token": "12345", ...parameter};
     final response = await dio.post(url, data: dataUpdate);
@@ -42,9 +38,9 @@ Future<List<dynamic>> updateHero(parameter) async {
   }
 }
 
-Future<List<dynamic>> deleteHero(name) async {
+Future<List<dynamic>> deleteItem(name) async {
   final dio = Dio();
-  String url = "https://apirov.vercel.app/hero/update";
+  String url = "https://apirov.vercel.app/item/update";
   try {
     final dataDelete = {"token": "12345", ...name};
     final response = await dio.post(url, data: dataDelete);
